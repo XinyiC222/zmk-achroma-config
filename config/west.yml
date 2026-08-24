@@ -15,5 +15,6 @@ manifest:
     - name: zmk-achroma-module
       remote: XinyiC222
       revision: main
+      path: zmk-achroma-config
   self:
     path: config
