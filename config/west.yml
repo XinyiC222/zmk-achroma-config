@@ -1,20 +1,16 @@
 manifest:
-  defaults:
-    revision: v0.3
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: XinyiC222
       url-base: https://github.com/XinyiC222
-    # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
       remote: zmkfirmware
+      revision: main
       import: app/west.yml
     - name: zmk-achroma-module
       remote: XinyiC222
       revision: main
-      path: zmk-achroma-config
   self:
     path: config
