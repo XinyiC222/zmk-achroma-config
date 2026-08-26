@@ -1,7 +1,5 @@
-strategy:
-  matrix:
-    include:
-      - board: nice_nano_v2
-        shield: achroma_left
-      - board: nice_nano_v2
-        shield: achroma_right
+include:
+  - board: nice_nano_v2
+    shield: achroma_left
+  - board: nice_nano_v2
+    shield: achroma_right
