@@ -15,7 +15,7 @@
                 &kp Q       &kp W       &kp E       &kp R       &kp T               &kp Y       &kp U       &kp I       &kp O       &kp P
                 &kp A       &kp S       &kp D       &kp F       &kp G               &kp H       &kp J       &kp K       &kp L       &kp SEMI
                 &kp Z       &kp X       &kp C       &kp V       &kp B               &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH
-                                        &kp LCTRL   &kp LSHIFT  &lt 1 SPACE         &lt 2 BSPC  &kp ENTER   &kp RSHIFT
+                                        &kp LCTRL   &kp LSHIFT  &lt 1 BSPC         &lt 2 SPACE  &kp ENTER   &kp RSHIFT
             >;
         };
 
@@ -37,7 +37,7 @@
                 &kp ESC       &kp HOME      &kp UP        &kp END       &kp PG_UP     &kp C_VOL_UP  &kp C_PP     &kp C_NEXT   &kp INS      &kp CAPS
                 &kp TAB       &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN     &kp C_VOL_DN  &kp LALT     &kp LCMD     &kp RCTRL    &kp SQT
                 &kp C_MUTE    &kp C_PREV    &trans        &trans        &trans        &trans        &trans       &trans       &kp GRAVE    &kp TILDE
-                                            &trans        &trans        &kp SPACE     &trans        &trans       &trans
+                                            &trans        &trans        &kp BSPC      &trans        &trans       &trans
             >;
         };
     };

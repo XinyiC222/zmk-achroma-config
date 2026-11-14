@@ -7,6 +7,16 @@
         zmk,underglow = &led_strip;
     };
 
+    // Switched 3.3V output on the VCC pad (P0.13), which powers the LEDs.
+    // Declared here so the rail is switched on at boot even though the underglow
+    // driver does not manage it (CONFIG_ZMK_RGB_UNDERGLOW_EXT_POWER=n).
+    ext-power {
+        compatible = "zmk,ext-power-generic";
+        control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+        init-delay-ms = <50>;
+        status = "okay";
+    };
+
     // Full-keyboard matrix: 10 columns (5 per half) x 4 rows.
     // Left half uses columns 0-4, right half uses columns 5-9 (col-offset set in right overlay).
     default_transform: keymap_transform_0 {
