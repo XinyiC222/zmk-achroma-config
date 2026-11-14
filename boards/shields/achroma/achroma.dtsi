@@ -1,13 +1,14 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/led/led.h>
 #include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
-#include <physical_layouts.dtsi>
 
 / {
     chosen {
         zmk,underglow = &led_strip;
     };
 
+    // Full-keyboard matrix: 10 columns (5 per half) x 4 rows.
+    // Left half uses columns 0-4, right half uses columns 5-9 (col-offset set in right overlay).
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <10>;
@@ -24,18 +25,21 @@
     physical_layout_split: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Achroma";
+
         kscan = <&kscan0>;
         transform = <&default_transform>;
     };
 };
 
-// --- PIN CONTROL FOR SPI3 (Pin 1 = P0.06) ---
+// LED data line: PCB net "RGB" -> nice!nano pad 1 -> P0.06, used as SPI3 MOSI.
+// NOTE: on the right half this pin changes if the controller is mounted mirrored. Review before building it.
 &pinctrl {
     spi3_default: spi3_default {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
         };
     };
+
     spi3_sleep: spi3_sleep {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
@@ -44,7 +48,6 @@
     };
 };
 
-// --- SPI3 CONFIGURATION FOR SK6812 / WS2812 ---
 &spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
@@ -56,7 +59,7 @@
         compatible = "worldsemi,ws2812-spi";
         reg = <0>;
         spi-max-frequency = <4000000>;
-        chain-length = <18>;
+        chain-length = <18>;   // 18 LEDs per half on the PCB
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
