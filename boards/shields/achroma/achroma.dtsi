@@ -29,16 +29,16 @@
     };
 };
 
-// --- PIN CONTROL FOR SPI3 ---
+// --- PIN CONTROL FOR SPI3 (Pin 1 = P0.06) ---
 &pinctrl {
     spi3_default: spi3_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_MOSI, 1, 11)>;
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
         };
     };
     spi3_sleep: spi3_sleep {
         group1 {
-            psels = <NRF_PSEL(SPIM_MOSI, 1, 11)>;
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
             low-power-enable;
         };
     };
