@@ -5,6 +5,18 @@
 #include <dt-bindings/zmk/rgb.h>
 
 / {
+    behaviors {
+        // Layer-tap that switches to the layer as soon as you press and release another key
+        // while holding it (so a quick "hold + tap" works), and types the tap key otherwise.
+        lt_b: layer_tap_balanced {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -15,7 +27,7 @@
                 &kp Q       &kp W       &kp E       &kp R       &kp T               &kp Y       &kp U       &kp I       &kp O       &kp P
                 &kp A       &kp S       &kp D       &kp F       &kp G               &kp H       &kp J       &kp K       &kp L       &kp SEMI
                 &kp Z       &kp X       &kp C       &kp V       &kp B               &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH
-                                        &kp LCTRL   &kp LSHIFT  &lt 1 BSPC         &lt 2 SPACE  &kp ENTER   &kp RSHIFT
+                                        &kp LCTRL   &kp LSHIFT  &lt_b 1 BSPC         &lt_b 2 SPACE  &kp ENTER   &kp RSHIFT
             >;
         };
 
